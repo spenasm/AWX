@@ -1,0 +1,23 @@
+---
+- name: "Actualizar apt"
+  hosts: Debian
+  become: yes
+  remote_user: spt
+  tasks:
+    - name: "Actualizar todas las máquinas Debian/Ubuntu"
+      apt:
+        update_cache: yes
+        upgrade: dist
+        
+- name: "Actualizar dnf"
+  hosts: Fedora
+  become: yes
+  remote_user: root
+  tasks:
+    - name: "Actualizar todas las máquinas Red Hat/Fedora"
+      dnf:
+        name: '*'
+        state: latest
+    
+    - name: "Mejorar todas las máquinas Red Hat/Fedora"
+      command: dnf upgrade --refresh
