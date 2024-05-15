@@ -5,7 +5,7 @@
   become: yes
   remote_user: spt
   vars:
-    mysql_root_password: abc123.
+    mysql_root_password: "abc123."
   tasks:
     - name: Instalar
       apt:
@@ -22,7 +22,7 @@
     - name: Generar contraseña de root
       community.mysql.mysql_user:
         name: root
-        password: abc123.
+        password: "{{ mysql_root_password }}"
         priv: '*.*:ALL,GRANT'
         host: localhost
         state: present
