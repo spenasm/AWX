@@ -1,5 +1,5 @@
 ---
-- name: "COnfigurar MariaDB"
+- name: "Configurar MariaDB"
   hosts: svfedora
   become: yes
   tasks:
