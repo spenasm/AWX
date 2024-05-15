@@ -18,12 +18,22 @@
         name: mariadb
         enabled: yes
         state: started
-
+...
     - name: Generar contraseña de root
       community.mysql.mysql_user:
-        name: root
-        password: "{{ mysql_root_password }}"
-        priv: '*.*:ALL,GRANT'
+        check_amplicit_admin: yes
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+        user: root
         host: localhost
-        state: present
-        
+        state: absent
+
+    - name: Borrar root remoto
+      community.mysql.mysql_user:
+        check_implicit_admin: yes
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+        user: root
+        host: localhost
+        state: absent
+       
