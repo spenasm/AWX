@@ -3,7 +3,7 @@
   hosts: svdebian
   become: yes
   tasks:
-    - name: "Instalación"
+    - name: "Instalar MariaDB"
       apt:
         name: mariadb-server
         state: present
