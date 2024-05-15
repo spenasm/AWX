@@ -13,17 +13,15 @@
           - mariadb-server
         state: latest
 
-    - name: Iniciar
+    - name: Iniciar servicio
       service:
         name: mariadb
         enabled: true
         state: started
 
-    - name: Contraseña
+    - name: Generar contraseña de root
       mysql_user:
-        check_implicit_admin: true
-        login_user: root
-        login_password: "{{ mysql_root_password }}"
-        user: root
+        name: root
         password: "{{ mysql_root_password }}"
-        host: localhost
+        host_all: true
+      
