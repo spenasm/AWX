@@ -19,7 +19,7 @@
         enabled: true
         state: started
 
-    - name: Contraseña root
+    - name: Contraseña
       mysql_user:
         check_implicit_admin: true
         login_user: root
