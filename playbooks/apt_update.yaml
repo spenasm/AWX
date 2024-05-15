@@ -1,0 +1,11 @@
+---
+- name: "Actualizar apt"
+  hosts: debian
+  become: yes
+  remote_user: spt
+  tasks:
+    - name: "Actualizar todas las máquinas Debian/Ubuntu"
+      apt:
+        update_cache: yes
+        upgrade: dist
+        
