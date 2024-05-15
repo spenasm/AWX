@@ -1,8 +1,8 @@
 ---
 - name: MariaDB
   hosts: svdebian
-  gather_facts: true
-  become: true
+  gather_facts: yes
+  become: yes
   remote_user: spt
   vars:
     mysql_root_password: "abc123."
@@ -16,12 +16,14 @@
     - name: Iniciar servicio
       service:
         name: mariadb
-        enabled: true
+        enabled: yes
         state: started
 
     - name: Generar contraseña de root
       mysql_user:
-        name: root
+        check_implicit_admin: yes
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+        user: root
         password: "{{ mysql_root_password }}"
-        host_all: true
-      
+        host: localhost
