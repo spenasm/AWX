@@ -3,6 +3,7 @@
   hosts: svdebian
   gather_facts: true
   become: true
+  remote_user: spt
   vars:
     mysql_root_password: "abc123."
   tasks:
