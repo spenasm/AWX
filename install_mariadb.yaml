@@ -1,34 +1,39 @@
 ---
-- name: "Configurar MariaDB"
-  hosts: svfedora
+- name: Instalar MariaDB
+  hosts: svdebian
+  gather_facts: yes
   become: yes
+  remote_user: spt
+  vars:
+    mysql_root_password: "abc123."
   tasks:
-    - name: "Instalar MariaDB"
-      dnf:
-        name: mariadb-server
-        state: present
+  
+    - name: Instalar 
+      apt:
+        name:
+          - mariadb-server
+        state: latest
+        
+    - name: Iniciar
+      service:
+        name: mariadb
+        enable: yes
+        state: started
 
-    - name: "Confirmar instalación"
-      mysql_secure_installation:
-        login_password: ''
-        login_unix_socket: /var/lib/mysql/mysql.sock
-        new_password: 'abcd1234.'
-        user: root
-        change_root_password: yes
-        remove_anonymous_users: yes
-        remove_test_database: yes
-        disallow_root_login_remotely: yes
-
-    - name: "Crear base de datos"
-      mysql_db:
-        name: awx_db
-        state: present
-        encoding: utf8
-        collation: utf8_general_ci
-
-    - name: "Crear usuario con privilegios"
+    - name: mysql_root_password
       mysql_user:
-        name: user_db
-        password: 'abc123.'
-        priv: 'user_db.*ALL'
-        state: present
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+        user: root
+        check_implicit_admin: yes
+        password: "{{ mysql_root_password }}"
+        host: localhost
+
+    - name: Eliminar root remoto 
+      mysql_user:
+        check_implicit_admin: yes
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+        user: root
+        host: "{{ ansible_fqdn }}"
+        state: absent
