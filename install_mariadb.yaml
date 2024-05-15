@@ -1,4 +1,11 @@
 ---
+- name: Instalar colección community.mysql
+  hosts: localhost
+  tasks:
+    - name: Instalar
+      ansible.builtin.collection:
+        name: community.mysql
+
 - name: MariaDB
   hosts: svdebian
   gather_facts: true
