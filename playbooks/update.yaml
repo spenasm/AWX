@@ -1,6 +1,6 @@
 ---
 - name: "Actualizar apt"
-  hosts: Debian
+  hosts: debian
   become: yes
   remote_user: spt
   tasks:
@@ -10,7 +10,7 @@
         upgrade: dist
         
 - name: "Actualizar dnf"
-  hosts: Fedora
+  hosts: fedora
   become: yes
   remote_user: root
   tasks:
