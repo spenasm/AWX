@@ -1,39 +1,20 @@
 ---
-- name: Instalar MariaDB
+- name: MariaDB
   hosts: svdebian
-  gather_facts: yes
-  become: yes
-  remote_user: spt
+  gather_facts: true
+  become: true
   vars:
     mysql_root_password: "abc123."
   tasks:
-  
-    - name: Instalar 
+    - name: Instalar
       apt:
         name:
           - mariadb-server
+          - python3-PyMySQL
         state: latest
-        
+
     - name: Iniciar
       service:
         name: mariadb
-        enable: yes
+        enabled: true
         state: started
-
-    - name: Contraseña root mysql
-      mysql_user:
-        login_user: root
-        login_password: "{{ mysql_root_password }}"
-        user: root
-        check_implicit_admin: yes
-        password: "{{ mysql_root_password }}"
-        host: localhost
-
-    - name: Eliminar root remoto 
-      mysql_user:
-        check_implicit_admin: yes
-        login_user: root
-        login_password: "{{ mysql_root_password }}"
-        user: root
-        host: "{{ ansible_fqdn }}"
-        state: absent
