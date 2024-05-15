@@ -1,9 +1,9 @@
 ---
-- name: "Configurar servidores MariaDB"
+- name: "Configurar MariaDB"
   hosts: svdebian
   become: yes
   tasks:
-    - name: "Instalar MariaDB"
+    - name: "Instalación"
       apt:
         name: mariadb-server
         state: present
