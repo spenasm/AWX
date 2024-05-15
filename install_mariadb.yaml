@@ -20,7 +20,7 @@
         enable: yes
         state: started
 
-    - name: mysql_root_password
+    - name: Contraseña root mysql
       mysql_user:
         login_user: root
         login_password: "{{ mysql_root_password }}"
