@@ -1,15 +1,15 @@
 ---
-- name: "Configurar servidor MariaDB"
+- name: Configurar servidor MariaDB
   hosts: svdebian
   become: yes
   remote_user: spt
   tasks:
-    - name: "Instalar MariaDB"
+    - name: Instalar MariaDB
       apt:
         name: mariadb-server
         state: present
 
-    - name: "Asegurar instalación de MariaDB"
+    - name: Asegurar instalación de MariaDB
       mysql_secure_installation:
         login_password: 'abc123.'
         login_unix_socket: /var/run/mysqld/mysqld.sock
@@ -20,14 +20,14 @@
         remove_test_database: yes
         disallow_root_login_remotely: yes
 
-    - name: "Crear base de datos"
+    - name: Crear base de datos
       mysql_db:
         name: awx_db
         state: present
         encoding: utf8
         collation: utf8_general_ci
 
-    - name: "Crear usuario y asignar privilegios"
+    - name: Crear usuario y asignar privilegios
       mysql_user:
         name: user_db
         password: 'abcd1234.'
