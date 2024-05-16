@@ -1,3 +1,5 @@
 ---
 collections:
+  # community.general
   - name: community.mysql
+    version: "3.7.2"
