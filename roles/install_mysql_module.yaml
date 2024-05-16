@@ -1,1 +1,8 @@
-
+---
+- name: Instalar community.mysql
+  hosts: localhost
+  gather_facts: yes
+  tasks:
+    - name: Instalar
+      ansible.builtin.commands:
+        cmd: ansible-galaxy collection install community.mysql
