@@ -5,4 +5,4 @@
   tasks:
     - name: Instalar
       ansible.builtin.command:
-        cmd: ansible-galaxy collection install community.mysql
+        cmd: sudo -E ansible-galaxy collection install community.mysql
