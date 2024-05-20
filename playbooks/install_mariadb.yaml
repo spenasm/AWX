@@ -5,8 +5,7 @@
   become: yes
   remote_user: spt
   tasks:
-
-
+  
     - name: Instalar Python
       raw: apt-get update -y && apt-get install -y sudo software-properties-common python3-pip
       changed_when: false
@@ -15,7 +14,7 @@
       pip:
         name:
           - PyMySQL
-          . mysqlclient
+          - mysqlclient
         state: present
     
     - name: Instalar mariaDB
