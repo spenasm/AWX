@@ -7,7 +7,7 @@
   tasks:
   
     - name: Crear ruta para dependencias
-      command: mkdir ~/venv
+      command: mkdir -p ~/venv
 
     - name: Instalar Python y dependencias
       apt:
