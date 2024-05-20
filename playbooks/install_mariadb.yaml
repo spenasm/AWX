@@ -10,6 +10,9 @@
       raw: apt-get update -y && apt-get install -y sudo software-properties-common python3-pip
       changed_when: false
 
+    - name: Crear ruta para dependencias
+      command: mkdir ~/venv
+      
     - name: Instalar dependencias
       apt:
         name:
@@ -19,7 +22,7 @@
 
     - name: Activar dependencias
       shell: |
-        python3 -m /venv ~/venv
+        python3 -m venv ~/venv
         source ~/venv//bin/activate
         pip install PyMySQL mysqlclient
       args:
