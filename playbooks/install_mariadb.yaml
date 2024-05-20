@@ -19,13 +19,12 @@
 
     - name: Activar dependencias
       shell: |
-        python3 -m /venv /path/to/venv
-        source /path/to/venv/bin/activate
+        python3 -m /venv ~/venv
+        source ~/venv//bin/activate
         pip install PyMySQL mysqlclient
       args:
         executable: /bin/bash
       
-    
     - name: Instalar mariaDB
       apt:
         name:
