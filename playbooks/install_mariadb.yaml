@@ -44,10 +44,10 @@
       command: /usr/bin/mysqladmin -u root password "abc123."
       ignore_errors: yes
 
-    - name: Eliminar root acceso remoto
-      community.mysql.mysql_user:
-        login_user: root
-        login_password: abc123.
-        name: root
-        host_all: yes
-        state: absent
+    #- name: Eliminar root acceso remoto
+      #community.mysql.mysql_user:
+        #login_user: root
+        #login_password: abc123.
+        #name: root
+        #host_all: yes
+        #state: absent
