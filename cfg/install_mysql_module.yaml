@@ -1,8 +1,0 @@
----
-- name: Instalar community.mysql
-  hosts: localhost
-  gather_facts: no
-  tasks:
-    - name: Instalar
-      ansible.builtin.command:
-        cmd: sudo -E ansible-galaxy collection install community.mysql
