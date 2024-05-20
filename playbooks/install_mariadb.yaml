@@ -18,11 +18,6 @@
         name: mariadb
         enabled: yes
         state: started
-
-    - name: Comprobar si el paquete necesario para mysql está instalado
-      pip:
-        name: pymysql
-        executable: pip3
         
     - name: Generar contraseña de root
       community.mysql.mysql_user:
