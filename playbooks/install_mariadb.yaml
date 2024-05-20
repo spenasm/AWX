@@ -41,9 +41,11 @@
         state: started
         
     - name: Generar contraseña de root
-      command: /usr/bin/mysqladmin -u root password "abc123."
-      ignore_errors: yes
-
+      community.mysql.mysql_user:
+        name: root
+        password: "abc123."
+        host_all: yes
+        
     #- name: Eliminar root acceso remoto
       #community.mysql.mysql_user:
         #login_user: root
