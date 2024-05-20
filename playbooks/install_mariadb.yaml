@@ -11,7 +11,7 @@
       changed_when: false
 
     - name: Instalar dependencias
-      pip:
+      apt:
         name:
           - PyMySQL
           - mysqlclient
